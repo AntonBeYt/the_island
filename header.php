@@ -8,7 +8,7 @@ use benhall14\phpCalendar\Calendar as Calendar;
 $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
-//session_start();
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">

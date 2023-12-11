@@ -14,12 +14,12 @@ $calendar->addEvent(
      ['myclass', 'abc']
 );
 echo $calendar->draw(date('2024-01-01'));
+
 ?>
-<form action="index.php" method="GET">
+<form action="insert.php" method="post">
      <input type="date" min="2024-01-01" max="2024-01-31" name="check-in">
      <input type="date" min="2024-01-01" max="2024-01-31" name="check-out">
      <input type="text" name="name" id="name" placeholder="your name">
-     <input type="text" name="payment" id="payment" placeholder="payment code">
      <div class="standard-radio-wrapper">
           <input type="radio" name="standard-choice" value="luxury" id="luxury">
           <label for="luxury">Luxury</label>
@@ -39,9 +39,20 @@ echo $calendar->draw(date('2024-01-01'));
      <input type="submit" name="submit" id="submit">
 
 </form>
-<?php if (isset($_GET['check-in'])) {
-     var_dump($_GET);
+<?php if (isset($_POST['check-in'])) {
+     var_dump($_POST);
 }
+
+
+// $statement = $db->query('SELECT * FROM features');
+// $features = $statement->fetchAll(PDO::FETCH_ASSOC);
+// echo "<pre>";
+// var_dump($features);
+// $cost = 0;
+// foreach ($features as $feature) {
+//      $cost = $cost + $feature['price'];
+// }
+// echo $cost;
 ?>
 
 <?php require __DIR__ . ('/footer.php'); ?>

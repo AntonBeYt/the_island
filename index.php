@@ -19,76 +19,83 @@ foreach ($bookedDates as $bookedDate) {
           'mask' => true
      ];
 }
-if (isset($_POST['standard-choice'])) {
-     $calendar->addEvents($booked);
-     echo $calendar->draw(date('2024-01-01'));
-}
+
 
 if (isset($_SESSION['error'])) : ?>
      <script>
           alert("<?= $_SESSION['error'] ?>")
      </script>
 <?php unset($_SESSION['error']);
-endif;
-
-if (isset($_SESSION['user'])) : ?>
-     <script>
-          alert("Your payment was refused, please try again")
-     </script>
-<?php session_unset();
-endif;
-?>
-<form action="index.php" method="post">
-     <div class="standard-radio-wrapper">
-          <input type="radio" name="standard-choice" value="luxury" id="luxury" <?php if (isset($_POST['standard-choice']) && $_POST['standard-choice'] === 'luxury') {
-                                                                                     echo "checked";
-                                                                                     $_SESSION['standard'] = 'luxury';
-                                                                                } ?>>
-          <label for="luxury">Luxury</label>
-          <input type="radio" name="standard-choice" value="standard" id="standard" <?php if (isset($_POST['standard-choice']) && $_POST['standard-choice'] === 'standard') {
-                                                                                          echo "checked";
-                                                                                          $_SESSION['standard'] = 'standard';
-                                                                                     } ?>>
-          <label for="standard">Standard</label>
-          <input type="radio" name="standard-choice" value="economy" id="economy" <?php if (isset($_POST['standard-choice']) && $_POST['standard-choice'] === 'economy') {
-                                                                                          echo "checked";
-                                                                                          $_SESSION['standard'] = 'economy';
-                                                                                     } ?>>
-          <label for="economy">Economy</label>
-          <input type="submit" name="submit" value="find dates">
+endif; ?>
+<section>
+     <div class="header-wrapper">
+          <img class="header-img" src="./assets/skyline.jpg" alt="">
      </div>
-</form>
-<!-- TODO: Send form to another page to check avainlability of rooms before insert -->
-<form action="insert.php" method="post">
-     <input type="date" min="2024-01-01" max="2024-01-31" name="check-in" required>
-     <input type="date" min="2024-01-01" max="2024-01-31" name="check-out" required>
-     <input type="text" name="name" id="name" placeholder="your name" required>
+</section>
 
-     <div class="addons-wrapper">
-          <input type="checkbox" value="snickers" name="snickers" id="snickers">
-          <label for="snickers">snickers</label>
-          <input type="checkbox" value="twix" name="twix" id="twix">
-          <label for="twix">twix</label>
-          <input type="checkbox" value="bounty" name="bounty" id="bounty">
-          <label for="bounty">bounty</label>
+<section class="form-wrapper">
+     <?php if (isset($_POST['standard-choice'])) {
+          $calendar->addEvents($booked);
+          echo $calendar->draw(date('2024-01-01'));
+     } ?>
+     <form action="index.php" method="post">
+          <div class="standard-radio-wrapper">
+               <input type="radio" name="standard-choice" value="luxury" id="luxury" <?php if (isset($_POST['standard-choice']) && $_POST['standard-choice'] === 'luxury') {
+                                                                                          echo "checked";
+                                                                                          $_SESSION['standard'] = 'luxury';
+                                                                                     } ?>>
+               <label for="luxury">Luxury</label>
+               <input type="radio" name="standard-choice" value="standard" id="standard" <?php if (isset($_POST['standard-choice']) && $_POST['standard-choice'] === 'standard') {
+                                                                                               echo "checked";
+                                                                                               $_SESSION['standard'] = 'standard';
+                                                                                          } ?>>
+               <label for="standard">Standard</label>
+               <input type="radio" name="standard-choice" value="economy" id="economy" <?php if (isset($_POST['standard-choice']) && $_POST['standard-choice'] === 'economy') {
+                                                                                               echo "checked";
+                                                                                               $_SESSION['standard'] = 'economy';
+                                                                                          } ?>>
+               <label for="economy">Economy</label>
+               <input type="submit" name="submit" value="Check Availability">
+          </div>
+     </form>
+     <?php if (isset($_POST['standard-choice'])) : ?>
+          <form action="insert.php" method="post">
+               <label for="check-in">Select check-in date:</label>
+               <input type="date" min="2024-01-01" max="2024-01-31" name="check-in" id="check-in" required>
+               <label for="check-out">Select check-out date:</label>
+               <input type="date" min="2024-01-01" max="2024-01-31" name="check-out" id="check-out" required>
+               <input type="text" name="name" id="name" placeholder="your name" required>
+
+               <div class="addons-wrapper">
+                    <input type="checkbox" value="snickers" name="snickers" id="snickers">
+                    <label for="snickers">snickers</label>
+                    <input type="checkbox" value="twix" name="twix" id="twix">
+                    <label for="twix">twix</label>
+                    <input type="checkbox" value="bounty" name="bounty" id="bounty">
+                    <label for="bounty">bounty</label>
+               </div>
+               <input type="submit" name="submit" id="submit">
+
+          </form>
+     <?php endif; ?>
+
+</section>
+<section class="room-info">
+     <p>our luxury room offers stuff</p>
+     <div class="img-wrapper">
+          <img class="room-img" src="./assets/AI_luxury_room.jpeg" alt="">
      </div>
-     <input type="submit" name="submit" id="submit">
-
-</form>
-<?php if (isset($_POST['check-in'])) {
-     var_dump($_POST);
-}
-
-
-// $statement = $db->query('SELECT * FROM features');
-// $features = $statement->fetchAll(PDO::FETCH_ASSOC);
-// echo "<pre>";
-// var_dump($features);
-// $cost = 0;
-// foreach ($features as $feature) {
-//      $cost = $cost + $feature['price'];
-// }
-// echo $cost;
-?>
-
+</section>
+<section class="room-info">
+     <div class="img-wrapper">
+          <img class="room-img" src="./assets/AI_standard_room2.jpeg" alt="">
+     </div>
+     <p>out standard room offers stuff</p>
+</section>
+<section class="room-info">
+     <p>our economy room offers stuff</p>
+     <div class="img-wrapper">
+          <img class="room-img" src="./assets/AI_dumpster.jpeg" alt="">
+     </div>
+</section>
 <?php require __DIR__ . ('/footer.php'); ?>

@@ -2,8 +2,8 @@
 require __DIR__ . ('/header.php');
 $db = new PDO('sqlite:booking.db');
 
-echo $_SESSION['user'];
-var_dump($_SESSION);
+// echo $_SESSION['user'];
+// var_dump($_SESSION);
 $subtotal = 0;
 $CI = strtotime($_SESSION['check-in']);
 $CU = strtotime($_SESSION['check-out']) + 86400;
@@ -29,7 +29,7 @@ if (isset($_SESSION['twix'])) {
 if (isset($_SESSION['bounty'])) {
      $subtotal = $subtotal + $_ENV['BOUNTY_COST'];
 }
-
+$_SESSION['subtotal'] = $subtotal;
 
 ?>
 
@@ -40,8 +40,12 @@ if (isset($_SESSION['bounty'])) {
      <p>You have selected our <?= $_SESSION['standard'] ?> room between <?= $_SESSION['check-in'] ?> and <?= $_SESSION['check-out'] ?>. </p>
 <?php } ?>
 <p>Cost: <br>
-     <!-- TODO: change "days" to day if stay is only one day -->
-     <?= $days ?> days in <?= ucfirst($_SESSION['standard']) ?> accomodation á <?= $roomPrice ?>$ = <?= $days * $roomPrice ?>$ <br>
+     <?= $days ?> <?php if ($days === 1) {
+                         echo "day";
+                    } else {
+                         echo "days";
+                    }
+                    ?> in <?= ucfirst($_SESSION['standard']) ?> accomodation á <?= $roomPrice ?>$ = <?= $days * $roomPrice ?>$ <br>
      <?php if (isset($_SESSION['snickers'])) : ?>
           1 <?= $_SESSION['snickers'] ?> á <?= $_ENV['SNICKERS_COST'] ?>$ <br>
      <?php endif ?>
@@ -53,7 +57,7 @@ if (isset($_SESSION['bounty'])) {
      <?php endif ?>
      booking fee á <?= $_ENV['BOOKING_FEE'] ?>$</p>
 <p>Your subtotal comes to: <?= $subtotal ?>$.</p>
-<form method="post" action="payment.php">
+<form method="post" action="validation.php">
      <input type="text" placeholder="payment code" name="pay-code">
      <input type="submit" name="submit">
 </form>

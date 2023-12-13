@@ -1,3 +1,5 @@
-.day {
+.mask,
+.mask-start,
+.mask-end {
   background-color: hotpink;
 }

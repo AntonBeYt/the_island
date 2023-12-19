@@ -74,7 +74,6 @@ if ($clash === false) {
      }
      header("Location: payment.php");
 } else {
-     echo "problems";
      $_SESSION['error'] = "one or more of your chosen dates were unavailible, please try again";
      header("Location: index.php");
 }

@@ -23,10 +23,10 @@ session_start();
      <title>Document</title>
 </head>
 
-<body>
+<body onload="restoreScrollPos()">
      <nav>
           <div class="nav-wrapper">
-               <img class="nav-background" src="./assets/backdrop1.png" alt="">
+               <img class="nav-background" src="./assets/backdrop_SVG.svg" alt="">
                <h1 class="hotel-name"><?= $_ENV['HOTEL_NAME'] ?></h1>
           </div>
      </nav>

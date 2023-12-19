@@ -20,7 +20,6 @@ foreach ($bookedDates as $bookedDate) {
      ];
 }
 
-
 if (isset($_SESSION['error'])) : ?>
      <script>
           alert("<?= $_SESSION['error'] ?>")
@@ -30,6 +29,7 @@ endif; ?>
 <section>
      <div class="header-wrapper">
           <img class="header-img" src="./assets/skyline.jpg" alt="">
+          <div class="gradient"></div>
      </div>
 </section>
 
@@ -37,8 +37,10 @@ endif; ?>
      <?php if (isset($_POST['standard-choice'])) {
           $calendar->addEvents($booked);
           echo $calendar->draw(date('2024-01-01'));
-     } ?>
-     <form action="index.php" method="post">
+     }
+
+     ?>
+     <form action="index.php" method="post" id="standard-choice-form">
           <div class="standard-radio-wrapper">
                <input type="radio" name="standard-choice" value="luxury" id="luxury" <?php if (isset($_POST['standard-choice']) && $_POST['standard-choice'] === 'luxury') {
                                                                                           echo "checked";
@@ -55,7 +57,8 @@ endif; ?>
                                                                                                $_SESSION['standard'] = 'economy';
                                                                                           } ?>>
                <label for="economy">Economy</label>
-               <input type="submit" name="submit" value="Check Availability">
+               <input type="hidden" value="scrollPos" id="scroll-position" name="scroll-position">
+               <input type="submit" name="submit" value="Check Availability" id="availability-btn" onclick="setScroll()">
           </div>
      </form>
      <?php if (isset($_POST['standard-choice'])) : ?>

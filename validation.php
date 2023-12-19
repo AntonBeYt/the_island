@@ -10,7 +10,6 @@ echo $_POST['pay-code'];
 if (isset($_POST['pay-code'])) {
      $result = htmlspecialchars($_POST['pay-code'], ENT_QUOTES);
      $result = isValidUuid($result);
-     var_dump($result);
      if ($result === true) {
           $client = new GuzzleHttp\Client();
           $validate = $client->request('POST', 'https://www.yrgopelag.se/centralbank/transferCode', ['form_params' => [
@@ -21,7 +20,7 @@ if (isset($_POST['pay-code'])) {
 
           $deposit = $client->request('POST', 'https://www.yrgopelag.se/centralbank/deposit', ['form_params' => [
                'user' => 'Anton',
-               'transfercode' => $_POST['pay-code']
+               'transferCode' => $_POST['pay-code']
           ]]);
           echo $deposit->getStatusCode();
           echo "<pre>";
@@ -34,7 +33,6 @@ if (isset($_POST['pay-code'])) {
           $payment->execute();
           // TODO: return confirmation of succesful booking
      } else {
-          echo "uh oh";
           $_SESSION['error'] = "Your payment was refused, please try again";
           // $deleteBooking = $db->prepare('DELETE FROM booking WHERE id = :id');
           // $deleteBooking->bindParam(':id', $_SESSION['user']);

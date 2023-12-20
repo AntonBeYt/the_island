@@ -16,10 +16,6 @@ if (window.location.pathname == '/index.php') {
   });
 }
 
-// document.getElementById('burger').addEventListener('click', () => {
-//   document.getElementById('burger-menu').classList.toggle('hidden');
-// });
-
 function setScroll() {
   let scroll = window.scrollY;
   let scrollString = scroll.toString();

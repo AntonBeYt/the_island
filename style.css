@@ -6,6 +6,21 @@ body {
   position: relative;
   overscroll-behavior: none;
 }
+.main {
+  height: 100%;
+  position: absolute;
+}
+.background-image {
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  background-image: url('/assets/spiral.svg');
+  background-repeat: repeat;
+  background-position: center;
+}
 a {
   text-decoration: none;
   color: #14171e;
@@ -63,6 +78,12 @@ nav {
   left: 20px;
   bottom: -2vw;
   z-index: 3;
+  &:hover {
+    scale: 1.1;
+    > a {
+      color: rgb(215, 136, 26);
+    }
+  }
 }
 .dropdown-wrapper {
   position: absolute;
@@ -83,6 +104,12 @@ nav {
 .gradient {
   background: linear-gradient(#14171e 10%, #f4e3c9);
   height: 10px;
+}
+.welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .centering {
   display: flex;
@@ -121,20 +148,52 @@ input[type='submit'] {
   width: 400px;
 }
 .room-info {
-  background-color: #41446e;
+  background-image: linear-gradient(to left, #41446e 50%, #36385d 50%);
+  background-position: right;
+  background-size: 200% 200%;
   color: #f4e3c9;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   margin: 100px 0 100px 0;
+  transition: 2s ease-in-out;
+  &:hover {
+    background-position: left;
+  }
 }
+.reverse {
+  background-image: linear-gradient(to right, #41446e 50%, #36385d 50%);
+  background-position: left;
+  &:hover {
+    background-position: right;
+  }
+}
+
 .adminform {
   display: flex;
   flex-direction: column;
 }
 .update-form {
   text-align: center;
+}
+.features-info {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: self-end;
+  gap: 3rem;
+}
+
+.feature {
+  max-width: 500px;
+}
+.feature-img {
+  max-width: 100%;
+  &:hover {
+    scale: 1.03;
+  }
 }
 /* input[type='radio'] {
   appearance: none;

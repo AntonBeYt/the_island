@@ -30,12 +30,14 @@ endif;
 </head>
 
 <body onload="restoreScrollPos()">
-     <nav>
-          <div class="nav-wrapper">
-               <img class="nav-background" src="./assets/backdrop_SVG.svg" alt="">
-          </div>
-          <h1 class="hotel-name"> <a href="index.php"> <?= $_ENV['HOTEL_NAME'] ?></a></h1>
-          <div class="dropdown-wrapper">
-               <h1><a href="admin.php">&#x2630;</a></h1>
-          </div>
-     </nav>
+     <div class="background-image">
+          <main>
+               <nav>
+                    <div class="nav-wrapper">
+                         <img class="nav-background" src="./assets/backdrop_SVG.svg" alt="">
+                    </div>
+                    <h1 class="hotel-name"> <a href="index.php"> <?= $_ENV['HOTEL_NAME'] ?></a></h1>
+                    <div class="dropdown-wrapper">
+                         <h1><a href="admin.php">&#x2630;</a></h1>
+                    </div>
+               </nav>

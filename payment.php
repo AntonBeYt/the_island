@@ -36,9 +36,7 @@ $subtotal = $subtotal + ($days * $roomPrice) + $_ENV['BOOKING_FEE'];
                $addonPrice = $addonCost->fetch()['price'];
                $subtotal = $subtotal + $addonPrice ?>
                1 <?= ucfirst($addon) ?> á <?= $addonPrice ?> $ <br>
-          <?php endforeach;
-          $_SESSION['subtotal'] = $subtotal; ?>
-
+          <?php endforeach; ?>
           booking fee á <?= $_ENV['BOOKING_FEE'] ?>$</p>
      <p>Your subtotal comes to: <?= $subtotal ?>$.</p>
      <form method="post" action="validation.php">
@@ -46,3 +44,4 @@ $subtotal = $subtotal + ($days * $roomPrice) + $_ENV['BOOKING_FEE'];
           <input type="submit" name="submit">
      </form>
 </div>
+<?php $_SESSION['subtotal'] = $subtotal;

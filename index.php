@@ -35,13 +35,19 @@ if (isset($_SESSION['user'])) {
           <div class="gradient"></div>
      </div>
 </section>
+<?php if (!isset($_POST['standard-choice'])) : ?>
+     <section class="welcome">
+          <p>Welcome to the singular <?= $_ENV['ISLAND_NAME'] ?> and hotel <?= $_ENV['HOTEL_NAME'] ?></p>
+          <p>We have everything anyone could need</p>
+          <p>Scroll down to see our rooms and extra features</p>
+     </section>
+<?php endif; ?>
 
 <section class="form-wrapper">
      <?php if (isset($_POST['standard-choice'])) {
           $calendar->addEvents($booked);
           echo $calendar->draw(date('2024-01-01'));
      }
-
      ?>
      <form action="index.php" method="post" id="standard-choice-form">
           <div class="standard-radio-wrapper">
@@ -97,19 +103,39 @@ if (isset($_SESSION['user'])) {
 <section class="room-info">
      <p>our luxury room offers stuff</p>
      <div class="img-wrapper">
-          <img class="room-img" src="./assets/AI_luxury_room.jpeg" alt="">
+          <img class="room-img" src="./assets/AI_luxury_room.jpeg" alt="luxury room">
      </div>
 </section>
-<section class="room-info">
+<section class="room-info reverse">
      <div class="img-wrapper">
-          <img class="room-img" src="./assets/AI_standard_room2.jpeg" alt="">
+          <img class="room-img" src="./assets/AI_standard_room2.jpeg" alt="standard room">
      </div>
      <p>out standard room offers stuff</p>
 </section>
 <section class="room-info">
      <p>our economy room offers stuff</p>
      <div class="img-wrapper">
-          <img class="room-img" src="./assets/AI_dumpster.jpeg" alt="">
+          <img class="room-img" src="./assets/AI_dumpster.jpeg" alt="economy room">
+     </div>
+</section>
+<section class="features-info">
+     <div class="feature">
+          <p>Sing yout heart on our Karaoke-stage!</p>
+          <img class="feature-img" src="./assets/AI_karaoke.jpeg" alt="">
+     </div>
+     <div class="feature">
+          <p>Play some classic Pétanque</p>
+          <img class="feature-img" src="./assets/AI_petanque.jpeg" alt="">
+     </div>
+     <div class="feature">
+          <p>Go on a Cryptid safari. Will you be the first to find the elusive Col Do Ma Ma Daqua?
+               Or mabye prove the existance of the Insulindian Phasmid?
+          </p>
+          <img class="feature-img" src="./assets/AI_cryptid.jpeg" alt="">
+     </div>
+     <div class="feature">
+          <p>Book a tour guide for the coast. See the sights. Experience the 2mm hole in reality. </p>
+          <img class="feature-img" src="./assets/AI_harbor.jpeg" alt="">
      </div>
 </section>
 <?php require __DIR__ . ('/footer.php'); ?>

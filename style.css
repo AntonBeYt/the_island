@@ -30,7 +30,7 @@ body {
   transition: all 0.4s;
 }
 .addons-wrapper.open {
-  max-height: 120px;
+  max-height: 180px;
   transition: all 0.4s;
 }
 h1 {
@@ -57,7 +57,13 @@ nav {
 .hotel-name {
   position: absolute;
   left: 20px;
-  bottom: 1vw;
+  bottom: -2vw;
+  z-index: 3;
+}
+.dropdown-wrapper {
+  position: absolute;
+  right: 20px;
+  bottom: -2vw;
   z-index: 3;
 }
 .header-wrapper {
@@ -73,6 +79,13 @@ nav {
 .gradient {
   background: linear-gradient(#14171e 10%, #f4e3c9);
   height: 10px;
+}
+.centering {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 .form-wrapper {
   display: flex;

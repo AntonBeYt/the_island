@@ -19,13 +19,16 @@ foreach ($bookedDates as $bookedDate) {
           'mask' => true
      ];
 }
-
-if (isset($_SESSION['error'])) : ?>
-     <script>
-          alert("<?= $_SESSION['error'] ?>")
-     </script>
-<?php unset($_SESSION['error']);
-endif; ?>
+if (isset($_SESSION['user'])) {
+     $deleteAddons = $db->prepare('DELETE FROM booking_features WHERE booking_features.guest_id IN (SELECT id FROM booking WHERE id = :id AND payment_code IS NULL);
+     ');
+     $deleteAddons->bindParam(':id', $_SESSION['user']);
+     $deleteAddons->execute();
+     $deleteBooking = $db->prepare('DELETE FROM booking WHERE (id = :id AND payment_code IS NULL)');
+     $deleteBooking->bindParam(':id', $_SESSION['user']);
+     $deleteBooking->execute();
+}
+?>
 <section>
      <div class="header-wrapper">
           <img class="header-img" src="./assets/skyline.jpg" alt="">
@@ -72,14 +75,17 @@ endif; ?>
                <div class="addons">
                     <div class="show-addons" id="show-addons"><span>Additional features</span> <span id="more">+</span> <span class="hidden" id="less">-</span></div>
                     <div class="addons-wrapper" id="addons-wrapper">
-                         <input type="checkbox" value="snickers" name="snickers" id="snickers">
-                         <label for="snickers">snickers</label>
+                         <input type="checkbox" value="karaoke" name="addons[]" id="karaoke">
+                         <label for="karaoke">Karaoke</label>
                          <br>
-                         <input type="checkbox" value="twix" name="twix" id="twix">
-                         <label for="twix">twix</label>
+                         <input type="checkbox" value="petanque" name="addons[]" id="petanque">
+                         <label for="petanque">Pétanque</label>
                          <br>
-                         <input type="checkbox" value="bounty" name="bounty" id="bounty">
-                         <label for="bounty">bounty</label>
+                         <input type="checkbox" value="safari" name="addons[]" id="safari">
+                         <label for="safari">Cryptid Safari</label>
+                         <br>
+                         <input type="checkbox" value="tour" name="addons[]" id="tour">
+                         <label for="tour">Guided Tour</label>
                     </div>
                </div>
                <input type="submit" name="submit" id="submit">

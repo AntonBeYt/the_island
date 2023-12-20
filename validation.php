@@ -16,32 +16,19 @@ if (isset($_POST['pay-code'])) {
                'transferCode' => $_POST['pay-code'],
                'totalcost' => $_SESSION['subtotal']
           ]]);
-          echo $validate->getStatusCode();
-
           $deposit = $client->request('POST', 'https://www.yrgopelag.se/centralbank/deposit', ['form_params' => [
                'user' => 'Anton',
                'transferCode' => $_POST['pay-code']
           ]]);
-          echo $deposit->getStatusCode();
-          echo "<pre>";
-          var_dump($deposit->getBody());
-
           $payment = $db->prepare($paymentQuery);
           $payment->bindParam(':payment_code', $_POST['pay-code']);
           $payment->bindParam(':subtotal', $_SESSION['subtotal']);
           $payment->bindParam(':user_id', $_SESSION['user']);
           $payment->execute();
-
+          header('Location: success.php');
           // TODO: return confirmation of succesful booking
      } else {
           $_SESSION['error'] = "Your payment was refused, please try again";
-          // $deleteBooking = $db->prepare('DELETE FROM booking WHERE id = :id');
-          // $deleteBooking->bindParam(':id', $_SESSION['user']);
-          // $deleteBooking->execute();
-          // $deleteAddons = $db->prepare('DELETE FROM booking_features WHERE guest_id = :id');
-          // $deleteAddons->bindParam(':id', $_SESSION['user']);
-          // $deleteAddons->execute();
-          // header('Location: index.php');
-          //move deletion to index? if session id isset and paymentcode null?
+          header('Location: payment.php');
      }
 }

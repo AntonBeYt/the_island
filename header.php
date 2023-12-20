@@ -9,6 +9,12 @@ $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
 session_start();
+if (isset($_SESSION['error'])) : ?>
+     <script>
+          alert("<?= $_SESSION['error'] ?>")
+     </script>
+<?php unset($_SESSION['error']);
+endif;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,6 +33,9 @@ session_start();
      <nav>
           <div class="nav-wrapper">
                <img class="nav-background" src="./assets/backdrop_SVG.svg" alt="">
-               <h1 class="hotel-name"><?= $_ENV['HOTEL_NAME'] ?></h1>
+          </div>
+          <h1 class="hotel-name"><?= $_ENV['HOTEL_NAME'] ?></h1>
+          <div class="dropdown-wrapper">
+               <h1>&#x2630;</h1>
           </div>
      </nav>

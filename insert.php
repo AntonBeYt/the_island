@@ -4,20 +4,17 @@ $db = new PDO('sqlite:booking.db');
 
 
 
-$newGuestQuery = 'INSERT INTO booking (guest_name, standard, check_in_date, check_out_date, addons) VALUES (:guest_name, :standard, :check_in_date, :check_out_date, :addons)';
+$newGuestQuery = 'INSERT INTO booking (guest_name, standard, check_in_date, check_out_date, addons, booking_time) VALUES (:guest_name, :standard, :check_in_date, :check_out_date, :addons, :booking_time)';
 
 $guest_name = trim($_POST['name']);
 $guest_name = htmlspecialchars($guest_name, ENT_QUOTES);
 $standard = $_SESSION['standard'];
 $CIdate = $_POST['check-in'];
 $CUdate = $_POST['check-out'];
-
-if (isset($_POST['snickers']) || isset($_POST['twix']) || isset($_POST['bounty'])) {
+if (isset($_POST['addons'])) {
      $addons = true;
-     $_SESSION['addons'] = true;
 } else {
      $addons = false;
-     $_SESSION['addons'] = false;
 }
 $_SESSION['guest'] = $guest_name;
 $_SESSION['standard'] = $standard;
@@ -49,27 +46,24 @@ if ($clash === false) {
      $newGuestStatement->bindParam(':check_in_date', $CIdate, PDO::PARAM_STR);
      $newGuestStatement->bindParam(':check_out_date', $CUdate, PDO::PARAM_STR);
      $newGuestStatement->bindParam(':addons', $addons, PDO::PARAM_BOOL);
+     $newGuestStatement->bindParam(':booking_time', time(), PDO::PARAM_INT);
 
      $newGuestStatement->execute();
 
      $last_id = $db->lastInsertId();
      $_SESSION['user'] = $last_id;
-     if (isset($_POST['snickers'])) {
-          $_SESSION['snickers'] = "Snickers";
-          $statement = $db->prepare('INSERT INTO booking_features (guest_id, feature_id) VALUES (:guest_id, 1)');
-          $statement->bindParam(':guest_id', $last_id);
-          $statement->execute();
+
+     $_SESSION['addons'] = [];
+     $features = ['karaoke', 'petanque', 'safari', 'tour'];
+
+     foreach ($_POST['addons'] as $addon) {
+          array_push($_SESSION['addons'], $addon);
      }
-     if (isset($_POST['twix'])) {
-          $_SESSION['twix'] = "Twix";
-          $statement = $db->prepare('INSERT INTO booking_features (guest_id, feature_id) VALUES (:guest_id, 2)');
+     foreach ($_SESSION['addons'] as $addon) {
+          $featureId = array_search($addon, $features) + 1;
+          $statement = $db->prepare('INSERT INTO booking_features (guest_id, feature_id) VALUES (:guest_id, :feature_id)');
           $statement->bindParam(':guest_id', $last_id);
-          $statement->execute();
-     }
-     if (isset($_POST['bounty'])) {
-          $_SESSION['bounty'] = "Bounty";
-          $statement = $db->prepare('INSERT INTO booking_features (guest_id, feature_id) VALUES (:guest_id, 3)');
-          $statement->bindParam(':guest_id', $last_id);
+          $statement->bindParam(':feature_id', $featureId);
           $statement->execute();
      }
      header("Location: payment.php");

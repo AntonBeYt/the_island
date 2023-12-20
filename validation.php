@@ -31,6 +31,7 @@ if (isset($_POST['pay-code'])) {
           $payment->bindParam(':subtotal', $_SESSION['subtotal']);
           $payment->bindParam(':user_id', $_SESSION['user']);
           $payment->execute();
+
           // TODO: return confirmation of succesful booking
      } else {
           $_SESSION['error'] = "Your payment was refused, please try again";

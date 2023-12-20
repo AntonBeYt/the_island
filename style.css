@@ -6,6 +6,33 @@ body {
   position: relative;
   overscroll-behavior: none;
 }
+.hidden {
+  display: none;
+  visibility: hidden;
+}
+.insert-form {
+  display: flex;
+  flex-direction: column;
+}
+.addons {
+  border: black solid 1px;
+}
+.show-addons {
+  display: flex;
+  justify-content: space-between;
+  &:hover {
+    cursor: pointer;
+  }
+}
+.addons-wrapper {
+  overflow-y: hidden;
+  max-height: 0;
+  transition: all 0.4s;
+}
+.addons-wrapper.open {
+  max-height: 120px;
+  transition: all 0.4s;
+}
 h1 {
   margin: 0;
 }

@@ -62,20 +62,25 @@ endif; ?>
           </div>
      </form>
      <?php if (isset($_POST['standard-choice'])) : ?>
-          <form action="insert.php" method="post">
+          <form action="insert.php" method="post" class="insert-form">
                <label for="check-in">Select check-in date:</label>
                <input type="date" min="2024-01-01" max="2024-01-31" name="check-in" id="check-in" required>
                <label for="check-out">Select check-out date:</label>
                <input type="date" min="2024-01-01" max="2024-01-31" name="check-out" id="check-out" required>
                <input type="text" name="name" id="name" placeholder="your name" required>
 
-               <div class="addons-wrapper">
-                    <input type="checkbox" value="snickers" name="snickers" id="snickers">
-                    <label for="snickers">snickers</label>
-                    <input type="checkbox" value="twix" name="twix" id="twix">
-                    <label for="twix">twix</label>
-                    <input type="checkbox" value="bounty" name="bounty" id="bounty">
-                    <label for="bounty">bounty</label>
+               <div class="addons">
+                    <div class="show-addons" id="show-addons"><span>Additional features</span> <span id="more">+</span> <span class="hidden" id="less">-</span></div>
+                    <div class="addons-wrapper" id="addons-wrapper">
+                         <input type="checkbox" value="snickers" name="snickers" id="snickers">
+                         <label for="snickers">snickers</label>
+                         <br>
+                         <input type="checkbox" value="twix" name="twix" id="twix">
+                         <label for="twix">twix</label>
+                         <br>
+                         <input type="checkbox" value="bounty" name="bounty" id="bounty">
+                         <label for="bounty">bounty</label>
+                    </div>
                </div>
                <input type="submit" name="submit" id="submit">
 

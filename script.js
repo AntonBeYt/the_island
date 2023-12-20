@@ -21,3 +21,9 @@ function restoreScrollPos() {
   window.scroll(0, posY);
   return true;
 }
+
+document.getElementById('show-addons').addEventListener('click', () => {
+  document.getElementById('addons-wrapper').classList.toggle('open');
+  document.getElementById('more').classList.toggle('hidden');
+  document.getElementById('less').classList.toggle('hidden');
+});

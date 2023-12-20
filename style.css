@@ -6,6 +6,10 @@ body {
   position: relative;
   overscroll-behavior: none;
 }
+a {
+  text-decoration: none;
+  color: #14171e;
+}
 .hidden {
   display: none;
   visibility: hidden;
@@ -125,7 +129,13 @@ input[type='submit'] {
   align-items: center;
   margin: 100px 0 100px 0;
 }
-
+.adminform {
+  display: flex;
+  flex-direction: column;
+}
+.update-form {
+  text-align: center;
+}
 /* input[type='radio'] {
   appearance: none;
   accent-color: #232323;

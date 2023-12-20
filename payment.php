@@ -7,19 +7,12 @@ $CI = strtotime($_SESSION['check-in']);
 $CU = strtotime($_SESSION['check-out']) + 86400;
 $days = ($CU - $CI) / 86400;
 
-if ($_SESSION['standard'] === 'luxury') {
-     $roomPrice = $_ENV['LUXURY_COST'];
-}
-if ($_SESSION['standard'] === 'standard') {
-     $roomPrice = $_ENV['STANDARD_COST'];
-}
-if ($_SESSION['standard'] === 'economy') {
-     $roomPrice = $_ENV['ECONOMY_COST'];
-}
+$standardCost = $db->prepare('SELECT price FROM standards WHERE standard = :standard');
+$standardCost->bindParam(':standard', $_SESSION['standard']);
+$standardCost->execute();
+$roomPrice = $standardCost->fetch(PDO::FETCH_ASSOC)['price'];
 
 $subtotal = $subtotal + ($days * $roomPrice) + $_ENV['BOOKING_FEE'];
-$_SESSION['subtotal'] = $subtotal;
-
 ?>
 <div class="centering">
      <p>Thank you <?= $_SESSION['guest'] ?> for your reservation.</p>
@@ -37,9 +30,14 @@ $_SESSION['subtotal'] = $subtotal;
                          ?> in <?= ucfirst($_SESSION['standard']) ?> accomodation á <?= $roomPrice ?>$ = <?= $days * $roomPrice ?>$ <br>
 
           <?php foreach ($_SESSION['addons'] as $addon) :
-               $subtotal = $subtotal + $_ENV[strtoupper($addon) . "_COST"] ?>
-               1 <?= ucfirst($addon) ?> á <?= $_ENV[strtoupper($addon) . "_COST"] ?> $ <br>
-          <?php endforeach ?>
+               $addonCost = $db->prepare('SELECT price FROM features WHERE feature_name = :feature_name');
+               $addonCost->bindParam(':feature_name', $addon);
+               $addonCost->execute();
+               $addonPrice = $addonCost->fetch()['price'];
+               $subtotal = $subtotal + $addonPrice ?>
+               1 <?= ucfirst($addon) ?> á <?= $addonPrice ?> $ <br>
+          <?php endforeach;
+          $_SESSION['subtotal'] = $subtotal; ?>
 
           booking fee á <?= $_ENV['BOOKING_FEE'] ?>$</p>
      <p>Your subtotal comes to: <?= $subtotal ?>$.</p>

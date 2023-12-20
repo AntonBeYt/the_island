@@ -1,6 +1,8 @@
 <?php
 require __DIR__ . ('/header.php');
 
+$db = new PDO('sqlite:booking.db');
+
 $succ = new stdClass;
 $succ->island = $_ENV['ISLAND_NAME'];
 $succ->hotel = $_ENV['HOTEL_NAME'];
@@ -10,10 +12,13 @@ $succ->total_cost = $_SESSION['subtotal'];
 $succ->stars = $_ENV['STARS'];
 $features = [];
 foreach ($_SESSION['addons'] as $addon) {
-     $envKey = strtoupper($addon) . "_COST";
+     $addonCost = $db->prepare('SELECT price FROM features WHERE feature_name = :feature_name');
+     $addonCost->bindParam(':feature_name', $addon);
+     $addonCost->execute();
+     $addonPrice = $addonCost->fetch()['price'];
      $unit = [
           'name' => $addon,
-          'price' => $_ENV[$envKey]
+          'price' => $addonPrice
      ];
      array_push($features, $unit);
 }

@@ -32,8 +32,8 @@ if (isset($_SESSION['user'])) {
 ?>
 <section>
      <div class="header-wrapper">
-          <img class="header-img" src="./assets/skyline.jpg" alt="">
-          <div class="gradient"></div>
+          <!-- <img class="header-img" src="./assets/skyline.jpg" alt=""> -->
+          <!-- <div class="gradient"></div> -->
      </div>
 </section>
 <?php if (!isset($_POST['standard-choice'])) : ?>
@@ -50,7 +50,7 @@ if (isset($_SESSION['user'])) {
           echo $calendar->draw(date('2024-01-01'));
      }
      ?>
-     <form action="index.php" method="post" id="standard-choice-form">
+     <form action="index.php" method="post" id="standard-choice-form" class="standard-choice-form">
           <div class="standard-radio-wrapper">
                <input type="radio" name="standard-choice" value="luxury" id="luxury" <?php if (isset($_POST['standard-choice']) && $_POST['standard-choice'] === 'luxury') {
                                                                                           echo "checked";
@@ -68,8 +68,8 @@ if (isset($_SESSION['user'])) {
                                                                                           } ?>>
                <label for="economy">Economy</label>
                <input type="hidden" value="scrollPos" id="scroll-position" name="scroll-position">
-               <input type="submit" name="submit" value="Check Availability" id="availability-btn" onclick="setScroll()">
           </div>
+          <input type="submit" name="submit" value="Check Availability" id="availability-btn" onclick="setScroll()">
      </form>
      <?php if (isset($_POST['standard-choice'])) : ?>
           <form action="insert.php" method="post" class="insert-form">
@@ -95,15 +95,19 @@ if (isset($_SESSION['user'])) {
                          <label for="tour">Guided Tour</label>
                     </div>
                </div>
-               <input type="submit" name="submit" id="submit">
+               <input type="submit" name="submit" id="submit" value="Continue to payment">
 
           </form>
      <?php endif; ?>
 
 </section>
 <section class="room-info">
-     <?php echo getRoomPrice($roomPrices, 'standard') ?>
-     <p>our luxury room offers stuff</p>
+     <div class="room-copy">
+          <p>Our Luxury room offers the latest in comfort, convenience and indulgence.
+               Lean back, relax and let us pamper you.
+          </p>
+          <p><?= getRoomPrice('luxury') ?>$/night</p>
+     </div>
      <div class="img-wrapper">
           <img class="room-img" src="./assets/AI_luxury_room.jpeg" alt="luxury room">
      </div>
@@ -112,31 +116,52 @@ if (isset($_SESSION['user'])) {
      <div class="img-wrapper">
           <img class="room-img" src="./assets/AI_standard_room2.jpeg" alt="standard room">
      </div>
-     <p>out standard room offers stuff</p>
+     <div class="room-copy">
+          <p>Our Standard room is for the traveller who desire comfort but came for the sights.
+               Enjoy a stay without hassle or frills.</p>
+          <p><?= getRoomPrice('standard') ?>$/night</p>
+     </div>
 </section>
 <section class="room-info">
-     <p>our economy room offers stuff</p>
+     <div class="room-copy">
+          <p>For the thifty traveller without scruples we have the Economy room.
+               For the adventurer who just need a safe place to sleep between outings, the Economy room is for you!
+          </p>
+          <p><?= getRoomPrice('economy') ?>$/night</p>
+     </div>
      <div class="img-wrapper">
           <img class="room-img" src="./assets/AI_dumpster.jpeg" alt="economy room">
      </div>
 </section>
 <section class="features-info">
      <div class="feature">
-          <p>Sing yout heart on our Karaoke-stage!</p>
+          <div class="feature-copy">
+               <p>Sing yout heart on our Karaoke-stage!</p>
+               <p><?= getFeaturePrice('karaoke') ?>$</p>
+          </div>
           <img class="feature-img" src="./assets/AI_karaoke.jpeg" alt="">
      </div>
      <div class="feature">
-          <p>Play some classic Pétanque</p>
+          <div class="feature-copy">
+               <p>Play some classic Pétanque</p>
+               <p><?= getFeaturePrice('petanque') ?>$</p>
+          </div>
           <img class="feature-img" src="./assets/AI_petanque.jpeg" alt="">
      </div>
      <div class="feature">
-          <p>Go on a Cryptid safari. Will you be the first to find the elusive Col Do Ma Ma Daqua?
-               Or mabye prove the existance of the Insulindian Phasmid?
-          </p>
+          <div class="feature-copy">
+               <p>Go on a Cryptid safari. Will you be the first to find the elusive Col Do Ma Ma Daqua?
+                    Or mabye prove the existance of the Insulindian Phasmid?
+               </p>
+               <p><?= getFeaturePrice('safari') ?>$</p>
+          </div>
           <img class="feature-img" src="./assets/AI_cryptid.jpeg" alt="">
      </div>
      <div class="feature">
-          <p>Book a tour guide for the coast. See the sights. Experience the 2mm hole in reality.</p>
+          <div class="feature-copy">
+               <p>Book a tour guide for the coast. See the sights. Experience the 2mm hole in reality.</p>
+               <p><?= getFeaturePrice('tour') ?>$</p>
+          </div>
           <img class="feature-img" src="./assets/AI_harbor.jpeg" alt="">
      </div>
 </section>

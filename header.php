@@ -32,7 +32,7 @@ endif;
 <body onload="restoreScrollPos()">
      <div class="background-image">
           <main>
-               <nav>
+               <!-- <nav>
                     <div class="nav-wrapper">
                          <img class="nav-background" src="./assets/backdrop_SVG.svg" alt="">
                     </div>
@@ -40,4 +40,4 @@ endif;
                     <div class="dropdown-wrapper">
                          <h1><a href="admin.php">&#x2630;</a></h1>
                     </div>
-               </nav>
+               </nav> -->

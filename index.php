@@ -3,6 +3,7 @@
 use benhall14\phpCalendar\Calendar;
 
 require __DIR__ . ('/header.php');
+require __DIR__ . ('/prizevars.php');
 
 $calendar = new Calendar;
 $calendar->useMondayStartingdate();
@@ -101,6 +102,7 @@ if (isset($_SESSION['user'])) {
 
 </section>
 <section class="room-info">
+     <?php echo getRoomPrice($roomPrices, 'standard') ?>
      <p>our luxury room offers stuff</p>
      <div class="img-wrapper">
           <img class="room-img" src="./assets/AI_luxury_room.jpeg" alt="luxury room">
@@ -134,7 +136,7 @@ if (isset($_SESSION['user'])) {
           <img class="feature-img" src="./assets/AI_cryptid.jpeg" alt="">
      </div>
      <div class="feature">
-          <p>Book a tour guide for the coast. See the sights. Experience the 2mm hole in reality. </p>
+          <p>Book a tour guide for the coast. See the sights. Experience the 2mm hole in reality.</p>
           <img class="feature-img" src="./assets/AI_harbor.jpeg" alt="">
      </div>
 </section>

@@ -93,6 +93,18 @@ if (isset($_SESSION['user'])) {
                          <br>
                          <input type="checkbox" value="tour" name="addons[]" id="tour">
                          <label for="tour">Guided Tour</label>
+                         <br>
+                         <input type="checkbox" value="maybells" name="addons[]" id="maybells">
+                         <label for="maybells">Maybells</label>
+                         <br>
+                         <input type="checkbox" value="novel" name="addons[]" id="novel">
+                         <label for="novel">Dick Mullen Novel</label>
+                         <br>
+                         <input type="checkbox" value="pen" name="addons[]" id="pen">
+                         <label for="pen">Kind Green Ape Pen</label>
+                         <br>
+                         <input type="checkbox" value="necktie" name="addons[]" id="necktie">
+                         <label for="necktie">Horiffic Necktie</label>
                     </div>
                </div>
                <input type="submit" name="submit" id="submit" value="Continue to payment">
@@ -163,6 +175,34 @@ if (isset($_SESSION['user'])) {
                <p><?= getFeaturePrice('tour') ?>$</p>
           </div>
           <img class="feature-img" src="./assets/AI_harbor.jpeg" alt="">
+     </div>
+     <div class="feature">
+          <div class="feature-copy">
+               <p>A fresh bouquet of maybells to spread a pleasant smell to your room.</p>
+               <p><?= getFeaturePrice('maybells') ?>$</p>
+          </div>
+          <img class="feature-img" src="./assets/AI_maybells.jpeg" alt="">
+     </div>
+     <div class="feature">
+          <div class="feature-copy">
+               <p>A thrilling crime-novel to enjoy and remember your stay by.</p>
+               <p><?= getFeaturePrice('novel') ?>$</p>
+          </div>
+          <img class="feature-img" src="./assets/AI_dick_mullen.jpeg" alt="">
+     </div>
+     <div class="feature">
+          <div class="feature-copy">
+               <p>A commemorative pen, featuring local legendary cryptid the Kind Green Ape.</p>
+               <p><?= getFeaturePrice('pen') ?>$</p>
+          </div>
+          <img class="feature-img" src="./assets/AI_green_ape.jpeg" alt="">
+     </div>
+     <div class="feature">
+          <div class="feature-copy">
+               <p>A truly horrific necktie to make your friends envious.</p>
+               <p><?= getFeaturePrice('novel') ?>$</p>
+          </div>
+          <img class="feature-img" src="./assets/AI_necktie.jpeg" alt="">
      </div>
 </section>
 <?php require __DIR__ . ('/footer.php'); ?>

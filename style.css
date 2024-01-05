@@ -101,16 +101,16 @@ nav {
   background-position: center;
   background-size: cover;
   gap: 0;
-  height: 50vh;
+  height: 60vh;
 }
-.header-img {
+/* .header-img {
   max-width: 100%;
   max-height: 100%;
 }
 .gradient {
   background: linear-gradient(#14171e 10%, #f4e3c9);
   height: 10px;
-}
+} */
 .welcome {
   display: flex;
   flex-direction: column;

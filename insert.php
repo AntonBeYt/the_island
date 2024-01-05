@@ -54,7 +54,7 @@ if ($clash === false) {
      $_SESSION['user'] = $last_id;
 
      $_SESSION['addons'] = [];
-     $features = ['karaoke', 'petanque', 'safari', 'tour'];
+     $features = ['karaoke', 'petanque', 'safari', 'tour', 'maybells', 'novel', 'pen', 'necktie'];
 
      foreach ($_POST['addons'] as $addon) {
           array_push($_SESSION['addons'], $addon);

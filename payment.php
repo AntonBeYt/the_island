@@ -45,3 +45,4 @@ $subtotal = $subtotal + ($days * $roomPrice) + $_ENV['BOOKING_FEE'];
      </form>
 </div>
 <?php $_SESSION['subtotal'] = $subtotal;
+require __DIR__ . ('/footer.php');

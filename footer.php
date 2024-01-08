@@ -3,6 +3,6 @@
 </main>
 </div>
 </body>
-<script src="script.js"></script>
+<script src="https://iiwii.se/whirling/script.js"></script>
 
 </html>

@@ -1,7 +1,7 @@
 <?php
 $db = new PDO('sqlite:booking.db');
 
-
+session_start();
 
 $newGuestQuery = 'INSERT INTO booking (guest_name, standard, check_in_date, check_out_date, addons, booking_time) VALUES (:guest_name, :standard, :check_in_date, :check_out_date, :addons, :booking_time)';
 

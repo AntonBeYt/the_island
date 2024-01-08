@@ -1,5 +1,4 @@
 <?php
-require __DIR__ . ('/header.php');
 $db = new PDO('sqlite:booking.db');
 
 

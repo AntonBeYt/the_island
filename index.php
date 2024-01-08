@@ -41,6 +41,7 @@ if (isset($_SESSION['user'])) {
           <p>Welcome to the singular <?= $_ENV['ISLAND_NAME'] ?> and hotel <?= $_ENV['HOTEL_NAME'] ?></p>
           <p>We have everything anyone could need</p>
           <p>Scroll down to see our rooms and extra features</p>
+          <p>Book five or more days to recieve a 25% discount on your room</p>
      </section>
 <?php endif; ?>
 

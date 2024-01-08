@@ -12,6 +12,7 @@ session_start();
 if (isset($_SESSION['error'])) : ?>
      <script>
           alert("<?= $_SESSION['error'] ?>")
+          window.location.reload();
      </script>
 <?php unset($_SESSION['error']);
 endif;

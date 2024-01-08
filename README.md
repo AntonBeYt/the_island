@@ -10,7 +10,56 @@ Why not add some info about the hotel of your dreams?
 
 # Instructions
 
-If your project requires some installation or similar, please inform your user 'bout it. For instance, if you want a more decent indentation of your .php files, you could edit [.editorconfig]('/.editorconfig').
+This project uses the php calender from benhall14
+https://packagist.org/packages/benhall14/php-calendar
+
+And Guzzle
+https://docs.guzzlephp.org/en/stable/overview.html#installation
+
+# Database
+
+```sql
+
+CREATE TABLE booking (
+	id INTEGER PRIMARY KEY,
+	guest_name varchar NOT NULL,
+	payment_code varchar,
+	standard varchar NOT NULL,
+	check_in_date date NOT NULL,
+	check_out_date date NOT NULL,
+	addons bool NOT NULL,
+	subtotal integer,
+	booking_time integer
+);
+
+CREATE TABLE features (
+	id integer PRIMARY KEY,
+	feature_name varchar NOT NULL,
+	price integer NOT NULL
+);
+
+CREATE TABLE booking_features (
+	id integer PRIMARY KEY,
+	guest_id integer NOT NULL,
+	feature_id integer NOT NULL,
+	FOREIGN KEY (guest_id) REFERENCES booking(id)
+	FOREIGN KEY (feature_id) REFERENCES features(id)
+);
+
+CREATE TABLE standards (
+	id INTEGER PRIMARY KEY,
+	standard VARCHAR NOT NULL,
+	price integer NOT NULL
+);
+
+INSERT INTO features (feature_name, price)
+VALUES ('karaoke', 1), ('petanque', 1), ('safari', 1), ('tour', 1), ('maybells', 1), ('novel', 1), ('pen', 1), ('necktie', 1);
+
+INSERT INTO standards (standard, price)
+VALUES ('luxury', 3), ('standard', 2), ('economy', 1);
+
+```
+
 
 # Code review
 

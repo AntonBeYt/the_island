@@ -1,7 +1,9 @@
 <?php
+
+require __DIR__ . ('/header.php');
 $db = new PDO('sqlite:booking.db');
 
-session_start();
+
 
 $newGuestQuery = 'INSERT INTO booking (guest_name, standard, check_in_date, check_out_date, addons, booking_time) VALUES (:guest_name, :standard, :check_in_date, :check_out_date, :addons, :booking_time)';
 
@@ -65,8 +67,10 @@ if ($clash === false) {
           $statement->bindParam(':feature_id', $featureId);
           $statement->execute();
      }
-     header("Location: payment.php");
+     echo "<script type='text/javascript'>  window.location='payment.php'; </script>";
+     // header("Location: payment.php");
 } else {
      $_SESSION['error'] = "one or more of your chosen dates were unavailible, please try again";
-     header("Location: index.php");
+     echo "<script type='text/javascript'>  window.location='index.php'; </script>";
+     // header("Location: index.php");
 }

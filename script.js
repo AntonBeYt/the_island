@@ -1,6 +1,7 @@
 const CIpicker = document.getElementById('check-in');
 const CUpicker = document.getElementById('check-out');
-if (window.location.pathname == '/index.php') {
+let page = window.location.href;
+if (page == 'https://iiwii.se/whirling/index.php') {
   CIpicker.addEventListener('input', () => {
     let pickedCI = CIpicker.value;
     CUpicker.min = pickedCI;
@@ -23,13 +24,18 @@ function setScroll() {
 }
 
 function restoreScrollPos() {
-  let posYString = localStorage.getItem('scrollPosition');
-  let posY = parseInt(posYString);
-  window.scroll(0, posY);
-  return true;
+  if (page == 'https://iiwii.se/whirling/index.php') {
+    let posYString = localStorage.getItem('scrollPosition');
+    let posY = parseInt(posYString);
+    window.scroll(0, posY);
+    return true;
+  } else {
+    localStorage.setItem('scrollPosition', 0);
+    return;
+  }
 }
 
-if (window.location.pathname == '/success.php') {
+if (page == 'https://iiwii.se/whirling/success.php') {
   document.getElementById('show-confirmation').addEventListener('click', () => {
     document.getElementById('json-wrapper').classList.toggle('hidden');
   });

@@ -31,9 +31,11 @@ if (isset($_POST['pay-code'])) {
           $payment->bindParam(':subtotal', $_SESSION['subtotal']);
           $payment->bindParam(':user_id', $_SESSION['user']);
           $payment->execute();
-          header('Location: success.php');
+          echo "<script type='text/javascript'>  window.location='success.php'; </script>";
+          // header('Location: success.php');
      } else {
           $_SESSION['error'] = "Your payment was refused, please try again";
-          header('Location: payment.php');
+          echo "<script type='text/javascript'>  window.location='payment.php'; </script>";
+          // header('Location: payment.php');
      }
 }

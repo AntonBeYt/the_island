@@ -56,7 +56,6 @@ $discountRoomCost = (int) ceil(($days * $roomPrice) * 0.75);
           <input type="text" placeholder="payment code" name="pay-code">
           <input type="submit" name="submit">
      </form>
-     <?= var_dump($subtotal) ?>
 </div>
 <?php $_SESSION['subtotal'] = $subtotal;
 require __DIR__ . ('/footer.php');

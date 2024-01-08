@@ -32,8 +32,6 @@ if (isset($_SESSION['user'])) {
 ?>
 <section>
      <div class="header-wrapper">
-          <!-- <img class="header-img" src="./assets/skyline.jpg" alt=""> -->
-          <!-- <div class="gradient"></div> -->
      </div>
 </section>
 <?php if (!isset($_POST['standard-choice'])) : ?>

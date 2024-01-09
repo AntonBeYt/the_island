@@ -36,7 +36,7 @@ if (isset($_SESSION['user'])) {
 </section>
 <?php if (!isset($_POST['standard-choice'])) : ?>
      <section class="welcome">
-          <p>Welcome to the singular <?= $_ENV['ISLAND_NAME'] ?> and hotel <?= $_ENV['HOTEL_NAME'] ?></p>
+          <p>Welcome to the singular <?= $_ENV['ISLAND_NAME'] ?> and &#9734;&#9734;&#9734;&#9734; hotel <?= $_ENV['HOTEL_NAME'] ?></p>
           <p>We have everything anyone could need</p>
           <p>Scroll down to see our rooms and extra features</p>
           <p>Book five or more days to recieve a 25% discount on your room</p>
@@ -147,7 +147,7 @@ if (isset($_SESSION['user'])) {
 <section class="features-info">
      <div class="feature">
           <div class="feature-copy">
-               <p>Sing yout heart on our Karaoke-stage!</p>
+               <p>Sing yout heart out on our Karaoke-stage!</p>
                <p><?= getFeaturePrice('karaoke') ?>$</p>
           </div>
           <img class="feature-img" src="./assets/AI_karaoke.jpeg" alt="">
@@ -177,7 +177,7 @@ if (isset($_SESSION['user'])) {
      </div>
      <div class="feature">
           <div class="feature-copy">
-               <p>A fresh bouquet of maybells to spread a pleasant smell to your room.</p>
+               <p>A fresh bouquet of maybells to spread a pleasant smell in your room.</p>
                <p><?= getFeaturePrice('maybells') ?>$</p>
           </div>
           <img class="feature-img" src="./assets/AI_maybells.jpeg" alt="">

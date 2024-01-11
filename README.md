@@ -1,12 +1,12 @@
-WHY NOT A GIF HERE? TO SET THE MOOD.
 
 # Island name
 
-Some text about your lovely island
+The lovely Isola Insulinde.
+It's got everything from varied climate to friendly locals.
 
 # Hotel name
 
-Why not add some info about the hotel of your dreams?
+The Whirling is a small hotel, our main focus is guest satisfaction and supplying a comfortable stay.
 
 # Instructions
 

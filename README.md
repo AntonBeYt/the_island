@@ -1,6 +1,4 @@
-
 ![disco](https://github.com/AntonBeYt/the_island/assets/143318322/d1a28c18-0fd5-4ad6-a0de-848a23d5fa06)
-
 
 # Island name
 
@@ -67,16 +65,17 @@ VALUES ('luxury', 3), ('standard', 2), ('economy', 1);
 
 https://iiwii.se/whirling/index.php
 
-
 # Code review
 
-1. example.js:10-15 - Remember to think about X and this could be refactored using the amazing Y function.
-2. example.js:10-15 - Remember to think about X and this could be refactored using the amazing Y function.
-3. example.js:10-15 - Remember to think about X and this could be refactored using the amazing Y function.
-4. example.js:10-15 - Remember to think about X and this could be refactored using the amazing Y function.
-5. example.js:10-15 - Remember to think about X and this could be refactored using the amazing Y function.
-6. example.js:10-15 - Remember to think about X and this could be refactored using the amazing Y function.
-7. example.js:10-15 - Remember to think about X and this could be refactored using the amazing Y function.
-8. example.js:10-15 - Remember to think about X and this could be refactored using the amazing Y function.
-9. example.js:10-15 - Remember to think about X and this could be refactored using the amazing Y function.
-10. example.js:10-15 - Remember to think about X and this could be refactored using the amazing Y function.
+What a lovely little hotel!
+
+1. index.php:10-31 - Theese could be a function in your functions file instead.
+2. index.php:147-206 - If you put the images in your db you could fetch the information and build your divs using a foreach loop.
+3. insert.php:8-76 - These would be great as functions.
+4. script.js:5 - TypeError: Cannot read properties of null (reading 'addEventListener'). Maybe add a check for null before adding the eventlistener?
+5. footer.php:6 - Why not source the script with /scripts.js
+6. booking.php - Since this file is empty it's not needed.
+7. style.css:7 - background-color not in use.
+8. style.css:106-113 - this class is not needed since it's not used.
+9. validation.php:8-41 - These would make for some nice functions as well.
+10. validation.php:9, 35, 49 - Why not delete these old comments.

@@ -69,7 +69,7 @@ https://iiwii.se/whirling/index.php
 
 What a lovely little hotel!
 
-1. index.php:10-31 - Theese could be a function in your functions file instead.
+1. index.php:10-31 - These could be a function in your functions file instead.
 2. index.php:147-206 - If you put the images in your db you could fetch the information and build your divs using a foreach loop.
 3. insert.php:8-76 - These would be great as functions.
 4. script.js:5 - TypeError: Cannot read properties of null (reading 'addEventListener'). Maybe add a check for null before adding the eventlistener?

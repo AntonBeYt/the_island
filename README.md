@@ -1,4 +1,7 @@
 
+![disco](https://github.com/AntonBeYt/the_island/assets/143318322/d1a28c18-0fd5-4ad6-a0de-848a23d5fa06)
+
+
 # Island name
 
 The lovely Isola Insulinde.
